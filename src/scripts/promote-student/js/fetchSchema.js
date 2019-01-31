@@ -15,6 +15,9 @@ async function asyncForEach(array, callback) {
 //     });
 //}
 
+const curSchoolIdData = JSON.parse(document.getElementById('curschoolid-data').textContent);
+const { curSchoolId } = curSchoolIdData;
+
 // Access Students table through PS power-query
 const studentFetch = fetch(`/ws/schema/table/STUDENTS/projection=*`, {
     method: 'GET',
