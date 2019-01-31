@@ -3,6 +3,12 @@ import 'jsonq'
 
 // Access Students table through PS power-query
 // School id tag = ~(curschoolid)
+
+// Use curSchoolId in your fetch() url
+const curSchoolIdData = JSON.parse(document.getElementById('curschoolid-data').textContent);
+const curSchoolId = curSchoolIdData.curSchoolId; 
+
+// Access Students table through PS power-query
 const studentFetch = fetch(`/ws/schema/table/STUDENTS/projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
