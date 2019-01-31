@@ -16,7 +16,7 @@ async function asyncForEach(array, callback) {
 //}
 
 const curSchoolIdData = JSON.parse(document.getElementById('curschoolid-data').textContent);
-const { curSchoolId } = curSchoolIdData;
+const curSchoolId = curSchoolIdData.curSchoolId; // Use curSchoolId in your fetch() url
 
 // Access Students table through PS power-query
 const studentFetch = fetch(`/ws/schema/table/STUDENTS/projection=*`, {
