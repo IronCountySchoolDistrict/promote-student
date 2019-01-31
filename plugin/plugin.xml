@@ -15,8 +15,10 @@
     <field table="STUDENTS" field="HOMEROOM" access="FullAccess" />
     <field table="SECTIONS" field="ID" access="ViewOnly" />
     <field table="SECTIONS" field="GRADE_LEVEL" access="ViewOnly" />
+    <field table="SECTIONS" field="SCHOOLID" access="ViewOnly" />
     <field table="TEACHERS" field="ID" access="ViewOnly" />
-    <field table="TEACHERS" field="LASTFIRST" access="ViewOnly" />
+    <field table="TEACHERS" field="FIRSTLAST" access="ViewOnly" />
+    <field table="TEACHERS" field="SCHOOLID" access="ViewOnly" />
     <field table="CC" field="TEACHERID" access="ViewOnly" />
     <field table="CC" field="SECTIONID" access="ViewOnly" />
     <field table="CC" field="SCHOOLID" access="ViewOnly" />

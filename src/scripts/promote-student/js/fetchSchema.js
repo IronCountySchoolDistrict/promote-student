@@ -1,21 +1,8 @@
 import $ from 'jquery'
 import 'jsonq'
 
-// ForEach that uses async functionality
-async function asyncForEach(array, callback) {
-    for (let index = 0; index < array.length; index++) {
-        await callback(array[index], index, array)
-    }
-}
-// ForEach example use
-// const start = async () => {
-//     await asyncForEach([1, 2, 3], async (num) => {
-//         await waitFor(50);
-//         console.log(num);
-//     });
-//}
-
 // Access Students table through PS power-query
+// School id tag = ~(curschoolid)
 const studentFetch = fetch(`/ws/schema/table/STUDENTS/projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
@@ -51,7 +38,7 @@ const teacherFetch = fetch(`/ws/schema/table/TEACHERS/?projection=*`, {
     }
 }).then(resp => resp.json())
 
-// Access Student table through PS power-query
+// Access Student table through PS power-query and update Student record
 export const studentPut = (data) => fetch(`/ws/schema/table/STUDENTS`, {
     method: 'PUT',
     credentials: 'same-origin',
