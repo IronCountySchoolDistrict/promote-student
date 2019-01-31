@@ -100,7 +100,7 @@ const config = {
         new HtmlWebpackPlugin({
             template: `src/admin/schoolsetup/home.promote_teacher.content.footer.txt`,
             PS_URL: 'https://ps.irondistrict.org',
-            filename: `admin//schoolsetup/home.promote_teacher.content.footer.txt`,
+            filename: `admin/schoolsetup/home.promote_teacher.content.footer.txt`,
             chunks: ['vendor', 'index'],
             inject: false
         }),
@@ -111,7 +111,10 @@ const config = {
     ],
     resolve: {
         modules: ['src', 'node_modules'],
-        extensions: ['.js', '.mjs']
+        extensions: ['.js', '.mjs', '.scss', '.css'],
+        alias: {
+            dragula_css: path.join(__dirname, '/node_modules/dragula/dist/dragula.css')
+        } 
     }
 };
 

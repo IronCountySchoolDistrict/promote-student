@@ -1,1 +1,50 @@
 $PS_URL: "https://ps.irondistrict.org/";
+$blue: #64b5f6;
+$pink: #ff80ab;
+$orange: #ffcc80;
+$blue-grey: #607d8b;
+
+.index {
+    h4:after {
+        content:' ';
+        display:block;
+        border:1px solid #d0d0d0;
+        border-radius:4px;
+        -webkit-border-radius:4px;
+        -moz-border-radius:4px;
+        box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+        -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+        -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05); 
+    }
+    .center {
+        text-align: center;
+    }
+    .row-style {
+        min-height: 20em;
+    }
+    .student {
+        cursor: pointer;
+    }
+    .row {
+        .column.column-30 {
+            flex: 0 0 30%;
+            max-width: 30%;
+            border-right:2px solid #d0d0d0;
+            height: auto;
+        }
+    }
+    blockquote {
+        font-weight: 400;
+        color: black;
+        border-color: $blue-grey;
+    }
+    blockquote.blue {
+        background: $blue;
+    }
+    blockquote.pink {
+        background: $pink;
+    }
+    blockquote.orange {
+        background: $orange;
+    }
+}

@@ -1,0 +1,10 @@
+<permission_mappings>
+  <permission name='/admin/schoolsetup/index.html'>
+    <implies allow="get">/ws/schema/table/STUDENTS/#</implies>
+    <implies allow="post">/ws/schema/table/STUDENTS</implies>
+    <implies allow="put">/ws/schema/table/STUDENTS/#</implies>
+    <implies allow="get">/ws/schema/table/CC/#</implies>
+    <implies allow="get">/ws/schema/table/SECTIONS/#</implies>
+    <implies allow="get">/ws/schema/table/TEACHERS/#</implies>
+  </permission>
+</permission_mappings>
