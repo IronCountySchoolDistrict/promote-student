@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import 'whatwg-fetch'
 import 'jsonq'
 
 // Access Students table through PS power-query
@@ -9,7 +10,7 @@ const curSchoolIdData = JSON.parse(document.getElementById('curschoolid-data').t
 const curSchoolId = curSchoolIdData.curSchoolId; 
 
 // Access Students table through PS power-query
-const studentFetch = fetch(`/ws/schema/table/STUDENTS/p=${curSchoolId}&projection=*`, {
+const studentFetch = fetch(`/ws/schema/table/STUDENTS/p=schoolid===${curSchoolId}&projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
@@ -18,7 +19,7 @@ const studentFetch = fetch(`/ws/schema/table/STUDENTS/p=${curSchoolId}&projectio
 }).then(resp => resp.json())
 
 // Access CC table through PS power-query
-const ccFetch = fetch(`/ws/schema/table/CC/p=${curSchoolId}&?projection=*`, {
+const ccFetch = fetch(`/ws/schema/table/CC/p=schoolid===${curSchoolId}&?projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
@@ -27,7 +28,7 @@ const ccFetch = fetch(`/ws/schema/table/CC/p=${curSchoolId}&?projection=*`, {
 }).then(resp => resp.json())
 
 // Access Sections table through PS power-query
-const sectionFetch = fetch(`/ws/schema/table/SECTIONS/p=${curSchoolId}&?projection=*`, {
+const sectionFetch = fetch(`/ws/schema/table/SECTIONS/p=schoolid===${curSchoolId}&?projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
@@ -36,7 +37,7 @@ const sectionFetch = fetch(`/ws/schema/table/SECTIONS/p=${curSchoolId}&?projecti
 }).then(resp => resp.json())
 
 // Access Teachers table through PS power-query
-const teacherFetch = fetch(`/ws/schema/table/TEACHERS/p=${curSchoolId}&?projection=*`, {
+const teacherFetch = fetch(`/ws/schema/table/TEACHERS/p=schoolid===${curSchoolId}&?projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
@@ -56,7 +57,7 @@ export const studentPut = (data) => fetch(`/ws/schema/table/STUDENTS`, {
 })
 
 // Access Student table through PS power-query
-export const gradesPkg = () => {
+export const psData = () => {
     // Run power query fetch functions to recive Json like responce
     const [students, teachers, sections, cc] = await Promise.all ([
         studentFetch, teacherFetch, sectionFetch, ccFetch
@@ -106,6 +107,7 @@ export const gradesPkg = () => {
             })
         }
     })
-    resp.push(teacherJson)
+    jsonQ.sort(teachersJson)
+    resp.push({'teachers': teacherJson})
     return resp
 }

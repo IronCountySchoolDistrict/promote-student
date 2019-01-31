@@ -2,19 +2,25 @@ import $ from 'jquery'
 import 'dragula_css'
 import 'milligram'
 import 'whatwg-fetch'
-import { studentPut } from './fetchSchema'
+import { studentPut, psData } from './fetchSchema'
 import dragula from 'dragula'
 import template from '../html/index.html'
 import sass from '../sass/index.scss'
 
 $(() => {
-    // List of containers to watch.
+  // Get psData from fetchSchema. 
+  // Prepare data to be used for DOM generation.
+  let data = psData
+  let studentFetch = data.students
+  let teacherFetch = data.teachers
+  
+  // List of containers to watch.
   let containers = [
     document.querySelector('#students')
   ]
   // Dynamically set Teachers.
   let main = document.querySelector('#teachers')
-  let teacherList = Object.entries(teachers)
+  let teacherList = Object.entries(teacherFetch)
   let count = 0
   let rowCount = 0
   teacherList.forEach(([key, value]) => {
@@ -39,7 +45,7 @@ $(() => {
 
   // Dynamically set Students.
   let studentColumn = document.querySelector('#students')
-  let studentList = Object.entries(students)
+  let studentList = Object.entries(studentFetch)
   studentList.forEach(([key, value]) => {
     let gender
     if (value.gender === 'male') {
