@@ -9,7 +9,7 @@ const curSchoolIdData = JSON.parse(document.getElementById('curschoolid-data').t
 const curSchoolId = curSchoolIdData.curSchoolId; 
 
 // Access Students table through PS power-query
-const studentFetch = fetch(`/ws/schema/table/STUDENTS/projection=*`, {
+const studentFetch = fetch(`/ws/schema/table/STUDENTS/p=${curSchoolId}&projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
@@ -18,7 +18,7 @@ const studentFetch = fetch(`/ws/schema/table/STUDENTS/projection=*`, {
 }).then(resp => resp.json())
 
 // Access CC table through PS power-query
-const ccFetch = fetch(`/ws/schema/table/CC/?projection=*`, {
+const ccFetch = fetch(`/ws/schema/table/CC/p=${curSchoolId}&?projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
@@ -27,7 +27,7 @@ const ccFetch = fetch(`/ws/schema/table/CC/?projection=*`, {
 }).then(resp => resp.json())
 
 // Access Sections table through PS power-query
-const sectionFetch = fetch(`/ws/schema/table/SECTIONS/?projection=*`, {
+const sectionFetch = fetch(`/ws/schema/table/SECTIONS/p=${curSchoolId}&?projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
@@ -36,7 +36,7 @@ const sectionFetch = fetch(`/ws/schema/table/SECTIONS/?projection=*`, {
 }).then(resp => resp.json())
 
 // Access Teachers table through PS power-query
-const teacherFetch = fetch(`/ws/schema/table/TEACHERS/?projection=*`, {
+const teacherFetch = fetch(`/ws/schema/table/TEACHERS/p=${curSchoolId}&?projection=*`, {
     method: 'GET',
     credentials: 'same-origin',
     headers: {
@@ -59,7 +59,7 @@ export const studentPut = (data) => fetch(`/ws/schema/table/STUDENTS`, {
 export const gradesPkg = () => {
     // Run power query fetch functions to recive Json like responce
     const [students, teachers, sections, cc] = await Promise.all ([
-        studentFetch(), teacherFetch(), sectionFetch(), ccFetch()
+        studentFetch, teacherFetch, sectionFetch, ccFetch
     ])
 
     // Remove the outer most layer, "record", of the PS responce
