@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Promote Students</title>
+    <title>Holocron</title>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -9,23 +9,23 @@
     </script>
   </head>
   <body>
-   ~[wc:admin_header_frame_css]
-	<!-- breadcrumb start -->
-		<a href="/admin/schoolsetup/index.html" target="_top">Start Page</a> &gt; Promote Students
-		
-			<!-- breadcrumb end -->
-            ~[wc:admin_navigation_frame_css]
- 
     <div class="index container">
       <div class="row">
+        <div class="column"></div>
         <div class="column">
           <h3 class="center">Promote Students</h3>
         </div>
+        <div class="column">
+          <button id="modal">Add</button>
+        </div>
+      </div>
+      <div id="btn-group" class="row">
+
       </div>
       <div class="row">
         <div class="column column-30">
           <div id="students" class="drake-container">
-            <h4 class="no-drag">Students <span class="count"></span></h4>
+            <h4 class="no-drag" id="student-header">Students <span class="count"></span></h4>
           </div>
         </div>
         <div id="teachers" class="column">

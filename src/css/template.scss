@@ -1,9 +1,11 @@
-$PS_URL: "https://ps.irondistrict.org/";
+// Sass Variables
 $blue: #64b5f6;
 $pink: #ff80ab;
 $orange: #ffcc80;
-$blue-grey: #607d8b;
+$dark-grey: #757575;
+$black-grey: #606c76;
 
+// .index related sass
 .index {
     h4:after {
         content:' ';
@@ -16,15 +18,6 @@ $blue-grey: #607d8b;
         -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
         -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05); 
     }
-    .center {
-        text-align: center;
-    }
-    .row-style {
-        min-height: 20em;
-    }
-    .student {
-        cursor: pointer;
-    }
     .row {
         .column.column-30 {
             flex: 0 0 30%;
@@ -33,10 +26,31 @@ $blue-grey: #607d8b;
             height: auto;
         }
     }
+    .center {
+        text-align: center;
+    }
+    .row-style {
+        min-height: 20em;
+    }
+    #btn-group {
+        min-height: 8rem;
+        text-align: center;
+        .button-black {
+            color: $black-grey;
+            border-color: $black-grey;
+        }
+        .button-black:hover {
+            color: $pink;
+            border-color: $pink;
+        }
+    }
+    .student {
+        cursor: pointer;
+    }
     blockquote {
         font-weight: 400;
         color: black;
-        border-color: $blue-grey;
+        border-color: $dark-grey;
     }
     blockquote.blue {
         background: $blue;
@@ -47,4 +61,10 @@ $blue-grey: #607d8b;
     blockquote.orange {
         background: $orange;
     }
+}
+
+// Non-nested sass
+.button-cancel {
+    background-color: $pink;
+    border-color: $pink;
 }
