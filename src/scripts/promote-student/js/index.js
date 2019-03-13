@@ -1,23 +1,22 @@
 import $ from 'jquery'
+import '../css/template.scss'
 import 'dragula_css'
 import 'tingle_css'
-import '../css/template.scss'
-import 'milligram'
-import 'whatwg-fetch'
+import '/node_modules/milligram/dist/milligram.css'
 import tingle from 'tingle.js'
 import dragula from 'dragula'
 import _ from 'lodash'
-import students from '../public/json/studentsql.json'
 
 $(() => {
   // Required element variables
   let teachersElm = document.querySelector('#teachers')
   let studentElm = document.querySelector('#students')
   let btnGroup = document.querySelector('#btn-group')
+  let tlistSql = document.querySelector('.tlist')
   const gradeLevel = [0, 1, 2, 3, 4, 5, 6, 7]
 
   // Data from PS
-  let studentFetch = students
+  let studentFetch = JSON.parse(tlistSql.innerHTML)
 
   // List of containers to watch.
   let containers = [
@@ -25,11 +24,6 @@ $(() => {
   ]
 
   // Dynamically set Students.
-  /**
-   * @todo Make studentRender to be more generic.
-   * @todo Rework studentRender to work on grade click.
-   * @todo Enable filtering on the main student list by grade.
-  */
   // Takes PS Data pull and proccesses it into sessionStorage.
   const studentProcess = () => {
     let studentList = []
@@ -149,11 +143,6 @@ $(() => {
     teacherProcess(teacher, teacherGrade)
   })
 
-  // Grade btn-group eventListeners
-  /**
-   * @todo Create a generic eventListener to control grade filtering
-  */
-
   // Generate grade selection btn-group and inject into DOM.
   gradeLevel.forEach((element) => {
     let grade = element
@@ -172,10 +161,6 @@ $(() => {
   })
 
   // Clear the given elements innerHtml
-  /**
-   * @todo Fix clear to be more generic.
-   * @todo Allow clear to clear both teacher and students
-   */
   const clear = (elem, source) => {
     if (source === 'student') {
       while (elem.lastChild.id !== 'student-header') {
@@ -226,11 +211,6 @@ $(() => {
   }
 
   // TeacherRender injects teacher template into the DOM as well as any students associated
-  /**
-   * @todo Make teacherRender to be more generic.
-   * @todo Rework teacherRender to work on grade click.
-   * @todo Enable filtering on the main teacher list by grade.
-  */
   const teacherRender = (teacherList) => {
     let count = 0
     let rowCount = 0

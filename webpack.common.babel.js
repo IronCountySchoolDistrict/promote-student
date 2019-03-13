@@ -19,7 +19,7 @@ const config = {
         hints: false
     },
     externals: {
-        jquery: 'jQuery'
+        jquery: 'jQuery',
     },
     optimization: {
         splitChunks: {
@@ -98,9 +98,9 @@ const config = {
 
         // Page fragment definitions go here
         new HtmlWebpackPlugin({
-            template: `src/admin/schoolsetup/home.promote_teacher.content.footer.txt`,
+            template: `src/admin/home.promote_teacher.content.footer.txt`,
             PS_URL: 'https://ps.irondistrict.org',
-            filename: `admin/schoolsetup/home.promote_teacher.content.footer.txt`,
+            filename: `admin/home.promote_teacher.content.footer.txt`,
             chunks: ['vendor', 'index'],
             inject: false
         }),
@@ -113,7 +113,8 @@ const config = {
         modules: ['src', 'node_modules'],
         extensions: ['.js', '.mjs', '.scss', '.css'],
         alias: {
-            dragula_css: path.join(__dirname, '/node_modules/dragula/dist/dragula.css')
+            dragula_css: path.join(__dirname, '/node_modules/dragula/dist/dragula.css'),
+            tingle_css: path.join(__dirname, '/node_modules/tingle.js/dist/tingle.css')
         } 
     }
 };

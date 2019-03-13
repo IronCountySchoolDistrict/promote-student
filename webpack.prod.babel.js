@@ -1,7 +1,6 @@
 import path from 'path';
 import merge from 'webpack-merge';
 import webpack from 'webpack';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import pkgInfo from 'pkginfo';
 
@@ -20,7 +19,14 @@ export default merge(common, {
         rules: [{
             test: /\.(css|scss|sass)$/,
             use: [
-                MiniCssExtractPlugin.loader,
+                {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        includePaths: [
+                            path.resolve(__dirname, 'node_modules')
+                        ]
+                    }
+                },
                 'css-loader',
                 'sass-loader'
             ]
